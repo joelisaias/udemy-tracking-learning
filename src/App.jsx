@@ -3,7 +3,7 @@ import "./App.css";
 import { useGetCourseByIdQuery, useGetCoursesByFilterQuery } from "./app/apis/coursesApi";
 
 function App() {
-  const { data, error, isLoading } = useGetCoursesByFilterQuery({page:1,size:10,filter:"solid-clean"});
+  const { data, error, isLoading } = useGetCoursesByFilterQuery({page:1,size:10,filter:"nestjs"});
 
   return (
     <div className="App">
@@ -13,10 +13,10 @@ function App() {
         <>Loading...</>
       ) : data ? (
         data.results.map((course) => (
-          <>
+          <div key={course.id}>
             <h3>{course.title}</h3>
             <img src={course.image_480x270} alt={course.title} />
-          </>
+          </div>
         ))
       ) : null}
     </div>
